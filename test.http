@@ -1,0 +1,19 @@
+GET http://127.0.0.1:8080/get
+
+###
+
+POST http://127.0.0.1:8080/post
+
+###
+
+DELETE http://127.0.0.1:8080/delete
+
+###
+
+PATCH http://127.0.0.1:8080/patch
+
+###
+
+POST http://127.0.0.1:8080/invalid
+
+###

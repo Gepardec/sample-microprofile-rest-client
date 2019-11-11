@@ -1,0 +1,109 @@
+= Ample application MicroProfile Config
+
+This repository holds the sample application for illustrating the usage of MicroProfile-Rest-Client with Thorntail, Quarkus and Wildfly, and is part of an article you find at https://www.gepardec.com/blog/
+among other interesting articles.
+
+== Description
+
+This sample application implements a simple JEE application which uses a type safe rest client via MicroProfile-Rest-Client and runs as a microservice with Thorntail, Quarkus and as an WAR deployment in Wildfly.
+
+== Technologies
+
+* link:https://jdk.java.net/11/[Java JDK 11]
+* link:https://docs.jboss.org/wildfly/plugins/maven/2.0.1.Final/[wildfly-maven-plugin]
+* link:https://docs.thorntail.io/2.5.0.Final/#using-thorntail-maven-plugin_thorntail[thorntail-maven-plugin]
+* link:https://docs.thorntail.io/2.5.0.Final/[Thorntail]
+* link:https://wildfly.org/[Wildfly 18.0.0.Final]
+* link:https://github.com/eclipse/microprofile-rest-client/tree/1.3.3[MicroProfile-Rest-Client]
+* link:https://wildfly.org/[Wildfly 18.0.0.Final]
+* link:https://github.com/eclipse/microprofile-config/tree/1.3[MicroProfile-Config]
+* link:https://github.com/quarkusio/quarkus/tree/1.0.0.CR1[Quarkus]
+
+== Resources
+
+* link:./thorntail-props.yaml[``./thorntail-props.yaml``] +
+   The Thorntail configuration file which defines the rest client configuration properties
+* link:./src/main/resources/application.properties[``./src/main/resources/application.properties``] +
+   The Quarkus configuration file which defines the rest client configuration properties
+* link:./src/main/resources/project-defaults.yaml[``./src/main/resources/project-defaults.yaml``] +
+   The Thorntail default configuration file.
+* link:./wildfly.properties[``./wildfly.properties``] +
+   The properties file which defines the rest client configuration properties
+* link:./src/main/java/at/ihet/samples/microprofile/rest/client/ExternalRestResource.java[``./src/main/java/at/ihet/samples/microprofile/rest/client/ExternalRestResource.java``] +
+   The type safe rest client interface for the external rest resources
+* link:./src/main/java/at/ihet/samples/microprofile/rest/client/RestClientExceptionMapper.java[``./src/main/java/at/ihet/samples/microprofile/rest/client/RestClientExceptionMapper.java``] +
+   The rest client exception mapper for mapping an rest client error response to a Java Exception
+* link:./src/main/java/at/ihet/samples/microprofile/rest/client/RestClientHeaderHandler.java[``./src/main/java/at/ihet/samples/microprofile/rest/client/RestClientHeaderHandler.java``] +
+   The rest client header handler for reading incoming/outgoing headers and for enriching the outgoing headers
+* link:./src/main/java/at/ihet/samples/microprofile/rest/client/RestClientRequestFilter.java[``./src/main/java/at/ihet/samples/microprofile/rest/client/RestClientRequestFilter.java``] +
+   The rest client request filter
+* link:./src/main/java/at/ihet/samples/microprofile/rest/client/RestClientResponseFilter.java[``./src/main/java/at/ihet/samples/microprofile/rest/client/RestClientResponseFilter.java``] +
+   The rest client response filter
+* link:./pom.xml[``./pom.xml``] +
+   The ``pom.xml`` defining the Thorntail, Quarkus and Wildfly configurations separated by profiles
+
+== How to build
+
+.Thorntail microservice
+[source,bash]
+----
+mvn clean install -Pthorntail
+----
+
+.Quarkus microservice
+[source,bash]
+----
+mvn clean install -Pquarkus
+----
+
+.Wildfly WAR deployment
+[source,bash]
+----
+mvn clean install -Pwildfly
+----
+
+== How to run
+
+.Start Thorntail microservice
+[source,bash]
+----
+mvn thorntail:run -Pthorntail
+----
+
+.Start Quarkus microservice
+[source,bash]
+----
+java "-Djava.net.preferIPv4Stack=true" -jar target\microprofile-rest-client-0.0.1-SNAPSHOT-runner.jar
+----
+
+TIP: Normally the maven goal ``quarkus:dev`` should start the application as well but it fails with ClassNotFoundException (org/jboss/logging/Logger). +
+     I'm not familiar with Qurakus yet, so we run the jar instead.
+
+.Start/Configure/Deploy Wildfly
+[source,bash]
+----
+mvn wildfly:run -Pwildfly
+----
+
+== How to test
+
+If you use Intellij then you can use the ``test.http`` file for testing the rest endpoints. +
+Otherwise see the following available endpoints and use the tool of your choice.
+
+.GET call to external resource
+``GET http://127.0.0.1:8080/get``
+
+.POST call to external resource
+``POST http://127.0.0.1:8080/post``
+
+.PATCH call to external resource
+``PATCH http://127.0.0.1:8080/patch``
+
+.DELETE call to external resource
+``DELETE http://127.0.0.1:8080/delete``
+
+.POST call to unknown resource on external resource
+``GET http://127.0.0.1:8080/invalid``
+
+TIP: See the logs for invoked response filter, request filter and exception mapper.
+
