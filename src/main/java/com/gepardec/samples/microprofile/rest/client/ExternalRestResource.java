@@ -1,4 +1,4 @@
-package at.ihet.samples.microprofile.rest.client;
+package com.gepardec.samples.microprofile.rest.client;
 
 import org.eclipse.microprofile.rest.client.annotation.RegisterClientHeaders;
 import org.eclipse.microprofile.rest.client.annotation.RegisterProvider;

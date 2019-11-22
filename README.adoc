@@ -29,15 +29,15 @@ This sample application implements a simple JEE application which uses a type sa
    The Thorntail default configuration file.
 * link:./wildfly.properties[``./wildfly.properties``] +
    The properties file which defines the rest client configuration properties
-* link:./src/main/java/at/ihet/samples/microprofile/rest/client/ExternalRestResource.java[``./src/main/java/at/ihet/samples/microprofile/rest/client/ExternalRestResource.java``] +
+* link:./src/main/java/com/gepardec/samples/microprofile/rest/client/ExternalRestResource.java[``./src/main/java/com/gepardec/samples/microprofile/rest/client/ExternalRestResource.java``] +
    The type safe rest client interface for the external rest resources
-* link:./src/main/java/at/ihet/samples/microprofile/rest/client/RestClientExceptionMapper.java[``./src/main/java/at/ihet/samples/microprofile/rest/client/RestClientExceptionMapper.java``] +
+* link:./src/main/java/com/gepardec/samples/microprofile/rest/client/RestClientExceptionMapper.java[``./src/main/java/com/gepardec/samples/microprofile/rest/client/RestClientExceptionMapper.java``] +
    The rest client exception mapper for mapping an rest client error response to a Java Exception
-* link:./src/main/java/at/ihet/samples/microprofile/rest/client/RestClientHeaderHandler.java[``./src/main/java/at/ihet/samples/microprofile/rest/client/RestClientHeaderHandler.java``] +
+* link:./src/main/java/com/gepardec/samples/microprofile/rest/client/RestClientHeaderHandler.java[``./src/main/java/com/gepardec/samples/microprofile/rest/client/RestClientHeaderHandler.java``] +
    The rest client header handler for reading incoming/outgoing headers and for enriching the outgoing headers
-* link:./src/main/java/at/ihet/samples/microprofile/rest/client/RestClientRequestFilter.java[``./src/main/java/at/ihet/samples/microprofile/rest/client/RestClientRequestFilter.java``] +
+* link:./src/main/java/com/gepardec/samples/microprofile/rest/client/RestClientRequestFilter.java[``./src/main/java/com/gepardec/samples/microprofile/rest/client/RestClientRequestFilter.java``] +
    The rest client request filter
-* link:./src/main/java/at/ihet/samples/microprofile/rest/client/RestClientResponseFilter.java[``./src/main/java/at/ihet/samples/microprofile/rest/client/RestClientResponseFilter.java``] +
+* link:./src/main/java/com/gepardec/samples/microprofile/rest/client/RestClientResponseFilter.java[``./src/main/java/com/gepardec/samples/microprofile/rest/client/RestClientResponseFilter.java``] +
    The rest client response filter
 * link:./pom.xml[``./pom.xml``] +
    The ``pom.xml`` defining the Thorntail, Quarkus and Wildfly configurations separated by profiles

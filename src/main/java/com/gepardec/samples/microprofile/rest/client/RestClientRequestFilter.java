@@ -1,4 +1,4 @@
-package at.ihet.samples.microprofile.rest.client;
+package com.gepardec.samples.microprofile.rest.client;
 
 import org.jboss.logging.Logger;
 
